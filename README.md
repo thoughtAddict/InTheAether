@@ -20,6 +20,8 @@ This project will utilize...
 
 ...with the end-purpose to provide a place for "general banter" for friends across the globe.
 
+Developed on the Cloud9 IDE (c9.io)
+
 Resources and Credits
 ---
   - [NodeJS](http://nodejs.org/)  
