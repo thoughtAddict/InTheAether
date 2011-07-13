@@ -2,7 +2,7 @@
 InTheAether
 ===
 
-Online super chat and collaboration application.
+Online super chat and collaboration application.  (---*** Heavily under development *** ---)
  
 This project will utilize...
 
