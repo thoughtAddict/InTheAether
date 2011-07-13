@@ -6,7 +6,7 @@ Online super chat and collaboration application.
  
 This project will utilize...
 
-    Node JS
+        Node JS
     
     Express JS
     
@@ -17,7 +17,6 @@ This project will utilize...
     Mongoose ORM
 
     jQuery
-        front-end 
 
 ...with the end-purpose to provide a place for "general banter" for friends across the globe.
 
