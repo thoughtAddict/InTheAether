@@ -8,15 +8,15 @@ This project will utilize...
 
         Node JS
     
-    Express JS
+        Express JS
     
-    Now JS
+        Now JS
 
-    MongoDB
+        MongoDB
     
-    Mongoose ORM
+        Mongoose ORM
 
-    jQuery
+        jQuery
 
 ...with the end-purpose to provide a place for "general banter" for friends across the globe.
 
