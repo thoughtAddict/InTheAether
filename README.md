@@ -18,9 +18,9 @@ This project will utilize...
 
         jQuery
 
-...with the end-purpose to provide a place for "general banter" for friends across the globe.
+        Cloud9 IDE
 
-Developed on the Cloud9 IDE (c9.io)
+...with the end-purpose to provide a place for "general banter" for friends across the globe.
 
 Resources and Credits
 ---
@@ -30,3 +30,4 @@ Resources and Credits
   - [MongoDB](http://www.mongodb.org/)  
   - [Mongoose](http://mongoosejs.com/)  
   - [jQuery](http://jquery.com/)    
+  - [cloud9](http://c9.io/)
