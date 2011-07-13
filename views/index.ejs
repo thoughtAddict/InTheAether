@@ -1,0 +1,129 @@
+<div id="joinIn" style="position: absolute; top: 10px; left: 10px; width: 1000px; height: 500px; border: 1px solid #CCCCCC; padding: 50px 0 0 0;">
+    <div style="width: 600px; height: 50px; border: 1px solid #CCCCCC; text-align: center; padding: 30px 20px 20px 20px; font: 12px Arial; margin: 0px auto;">
+        Your Name or Nickname : <input id="yourName" name="yourName" value="" size="30"/> <input type="button" value="Enter" id="btnEnterLeague"/> 
+    </div>
+</div>
+<div id="theLeague" style="display: none;">
+    <div class="messageContainer">
+        <div id="messages"></div>
+    </div>
+    <div class="central">
+
+    </div>
+    <div class="memberContainer">
+        
+        <div class="member">
+            <div class="memberImage">&nbsp;</div>
+            <div class="memberInfo">
+                <div class="memberName">Dingus</div>
+                <div class="memberStatus">in his seat</div>
+            </div>
+            <div class="clearDIV"></div>
+        </div>
+        
+    </div>
+    <div style="position: absolute; top: 540px; left: 10px; width: 800px; height: 40px;">
+        <input type="text" id="theMessage" size="50"/>
+        <input type="button" value="Send" id="btnSend"/>
+    </div>
+</div>
+
+<script>
+
+var popAlready = false;
+
+$(document).ready(function(){
+
+	now.receiveMessage = function(name, date, message) {
+
+		var atTheBottom = false;
+		var cssOffset    = 2;       // border of 1
+		var scrollTop    = $(".messageContainer").scrollTop();
+		var offsetHeight = $(".messageContainer")[0].offsetHeight;
+		var scrollHeight = $(".messageContainer")[0].scrollHeight;
+		var scrollLocation = scrollTop + offsetHeight - cssOffset;
+
+		if ( scrollLocation == scrollHeight ) {
+			atTheBottom = true;
+		}
+
+		$("#messages").append("<br><span style='color: #666666;'>" + date + "</span> <b>" + name + "</b>: " + message);
+
+		if (atTheBottom) {
+			$(".messageContainer").scrollTop( $(".messageContainer")[0].scrollHeight );
+		}   
+
+	}
+
+	now.updateMemberList = function(data, eventType) {
+
+		if ( eventType == "JOIN" ) {
+			$("#messages").append("<br><b>" + data + " has joined</b>");            
+		} else if ( eventType == "LEFT" ) {
+			$("#messages").append("<br><b>" + data + " has left</b>");
+		}
+		
+		
+		$(".messageContainer").scrollTop( $(".messageContainer")[0].scrollHeight );
+	}
+
+	now.populateLastConversation = function(messageArray) {
+
+		if ( !popAlready ) {
+
+			$.each(messageArray, function(index, currentMessage) { 
+	
+				if ( currentMessage.message.toUpperCase() == "JOIN" ) {
+					$("#messages").append("<br><b>" + currentMessage.name + " has joined</b>");
+				} else {
+					$("#messages").append("<br><span style='color: #666666;'>" + currentMessage.date + "</span> <b>" + currentMessage.name + "</b>: " + currentMessage.message);
+				}			  
+			});
+
+			popAlready = true;
+		}
+
+	}
+
+	$("#btnSend").click(function(){
+
+		var theMessage = $("#theMessage").val();
+
+		if ( "" != theMessage ) {
+			now.distributeMessage(theMessage);
+			$("#theMessage").val("");                           
+		}
+
+		$("#theMessage").focus();
+
+	});
+
+	$("#btnEnterLeague").click(function(){		
+
+		now.name = $("#yourName").val();
+		$("#joinIn").hide();
+		$("#theLeague").show();
+		$("#theMessage").focus();
+
+		now.memberLogin(now.name);
+	});  
+
+	$("#yourName").keypress(function(e) {
+
+		if(e.keyCode==13){
+			$("#btnEnterLeague").click();
+		}
+	});        
+
+	$("#theMessage").keypress(function(e) {
+
+		if(e.keyCode==13){
+			$("#btnSend").click();
+		}
+	});
+
+	$("#yourName").focus();        
+
+});
+
+</script>
